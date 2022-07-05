@@ -163,34 +163,4 @@ public class VotacaoServiceTest {
     	assertEquals(HttpStatus.OK, responseVotacao.getStatusCode());
     }
     
-//    @Test
-//    public void teste_inserir_pauta_inexistente() {
-//    	doReturn(Optional.ofNullable(null)).when(sessaoRepository).findByStatus(Mockito.any());
-//    	ResponseEntity<?> responseSessao = this.sessaoService.inserir(sessaoDTO);
-//    	assertEquals(HttpStatus.NOT_FOUND, responseSessao.getStatusCode());
-//    }
-//    
-//    @Test
-//    public void teste_inserir_pauta_existente() {
-//    	doReturn(Optional.ofNullable(null)).when(sessaoRepository).findByStatus(Mockito.any());
-//    	Mockito.when(pautaService.obterPautaPorId(Mockito.any())).thenReturn(pautaModel);
-//    	Mockito.when(sessaoRepository.save(Mockito.any())).thenReturn(sessaoModel);
-//    	ResponseEntity<?> responseSessao = this.sessaoService.inserir(sessaoDTO);
-//    	assertEquals(HttpStatus.CREATED, responseSessao.getStatusCode());
-//    }
-//    
-//    @Test
-//    public void teste_busca_id() {
-//    	doReturn(Optional.of(sessaoModel)).when(sessaoRepository).findById(ID);
-//    	SessaoModel sessao = this.sessaoService.buscarSessaoPorId(ID);
-//    	assertEquals(ID, sessao.getId());
-//    }
-//    
-//    @Test
-//    public void teste_busca_id_inexistente() {
-//    	doReturn(Optional.of(sessaoModel)).when(sessaoRepository).findById(ID);
-//    	SessaoModel sessao = this.sessaoService.buscarSessaoPorId(Mockito.any());
-//    	assertNull(sessao);
-//    }
-
 }
