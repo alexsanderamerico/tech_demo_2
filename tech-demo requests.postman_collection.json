@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "bbe86452-77ee-4a66-a4e9-877e0957de57",
+		"name": "tech-demo requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1 - Criar Pauta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\":\"pauta referente a votacao y\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pauta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2 - Criar Sessao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pautaId\": \"2eae4fd6-db3d-4ece-aaf5-53b7e50353c3\",\r\n    \"duracao\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/sessao",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3 - Votar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cpf\":\"60831135042\",\r\n    \"voto\":\"Sim\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/votacao/votar/:sessaoId",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"votacao",
+						"votar",
+						":sessaoId"
+					],
+					"variable": [
+						{
+							"key": "sessaoId",
+							"value": "b91feb15-c28d-4e44-aef1-fe06ef79dda4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4 - Resultado Votacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/votacao/resultado/:sessaoId",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"votacao",
+						"resultado",
+						":sessaoId"
+					],
+					"variable": [
+						{
+							"key": "sessaoId",
+							"value": "9b973f29-5af9-47e4-9666-af88782081c4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
