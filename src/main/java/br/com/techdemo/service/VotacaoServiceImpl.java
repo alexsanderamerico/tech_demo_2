@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import br.com.techdemo.dto.request.VotacaoDTO;
 import br.com.techdemo.dto.response.VotacaoResponseDTO;
 import br.com.techdemo.dto.response.VotacaoResultadoResponseDTO;
-import br.com.techdemo.enums.SessaoStatusEnum;
 import br.com.techdemo.model.PautaModel;
 import br.com.techdemo.model.SessaoModel;
 import br.com.techdemo.model.VotacaoModel;

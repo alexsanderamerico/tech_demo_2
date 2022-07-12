@@ -68,7 +68,7 @@ public class SessaoServiceTest {
     @Test
     public void teste_inserir_sessao_existente() {
     	sessaoDTO.setDuracao(null);
-    	doReturn(Optional.of(sessaoModel)).when(sessaoRepository).findByStatus(Mockito.any());
+    	doReturn(Optional.of(sessaoModel)).when(sessaoRepository).findFirstByDataEncerramentoAfter(Mockito.any());
     	ResponseEntity<?> responseSessao = this.sessaoService.inserir(sessaoDTO);
     	assertEquals(HttpStatus.CONFLICT, responseSessao.getStatusCode());
     }

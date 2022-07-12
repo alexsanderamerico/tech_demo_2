@@ -158,6 +158,7 @@ public class VotacaoServiceTest {
     	votacoes.add(votacaoModel);
     	sessaoModel.setVotacao(votacoes);
     	sessaoModel.setStatus(SessaoStatusEnum.F);
+    	sessaoModel.setDataEncerramento(dataEncerramentoMaior);
     	Mockito.when(sessaoService.buscarSessaoPorId(ID)).thenReturn(sessaoModel);
     	ResponseEntity<?> responseVotacao = this.votacaoService.contabilizar(ID);
     	assertEquals(HttpStatus.OK, responseVotacao.getStatusCode());
