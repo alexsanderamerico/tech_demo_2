@@ -1,5 +1,6 @@
 package br.com.techdemo.repository;
 
+import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -14,4 +15,6 @@ public interface SessaoRepository extends CrudRepository<SessaoModel, Long> {
   Optional<SessaoModel> findByStatus(SessaoStatusEnum status);
 
   Optional<SessaoModel> findById(UUID uuid);
+  
+  Optional<SessaoModel> findFirstByDataEncerramentoAfter(Date data);
 }

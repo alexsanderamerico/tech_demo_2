@@ -33,7 +33,10 @@ public class SessaoServiceImpl extends BaseServiceImpl implements SessaoService{
 	
 		Integer duracao = sessaoDTO.getDuracao() == null ? DURACAO_SESSAO_DEFAULT : sessaoDTO.getDuracao();
 		
-		SessaoModel sessaoAtiva = sessaoRepository.findByStatus(SessaoStatusEnum.A).orElseGet(() -> {return null;});
+		Long horarioAtual = System.currentTimeMillis();
+		Date dataAtual = new Date(horarioAtual);
+		
+		SessaoModel sessaoAtiva = sessaoRepository.findFirstByDataEncerramentoAfter(dataAtual).orElseGet(() -> {return null;});
 		if (Objects.nonNull(sessaoAtiva)) 
 			return new ResponseEntity<>("Existe uma sessão ativa", HttpStatus.CONFLICT);
 
@@ -43,8 +46,6 @@ public class SessaoServiceImpl extends BaseServiceImpl implements SessaoService{
 			return new ResponseEntity<>("Pauta informada não existe", HttpStatus.NOT_FOUND);
 		
 		// Calcular horario de encerramento
-		Long horarioAtual = System.currentTimeMillis();
-		Date dataAtual = new Date(horarioAtual);
 		Date dataEncerramento = new Date(horarioAtual + (duracao * SESSENTA * MIL));
 		
 		// Montar objeto para persistencia

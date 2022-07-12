@@ -32,10 +32,7 @@ public class VotacaoServiceImpl extends BaseServiceImpl implements VotacaoServic
 		SessaoModel sessaoAtual = sessaoService.buscarSessaoPorId(sessaoID);
 		if(Objects.isNull(sessaoAtual))
 			return new ResponseEntity<>("Sessão inexistente", HttpStatus.NOT_FOUND);
-		// Verificar se sessao está ativa
-		if(sessaoAtual.getStatus().equals(SessaoStatusEnum.F))
-			return new ResponseEntity<>("Sessão finalizada", HttpStatus.FORBIDDEN);
-		
+		// Verificar se sessao está ativa		
 		if(!validarEncerramento(sessaoAtual.getDataEncerramento().getTime()))
 			return new ResponseEntity<>("Sessão finalizada", HttpStatus.FORBIDDEN);
 		
@@ -65,8 +62,9 @@ public class VotacaoServiceImpl extends BaseServiceImpl implements VotacaoServic
 		if(Objects.isNull(sessao))
 			return new ResponseEntity<>("Sessão inexistente", HttpStatus.NOT_FOUND);
 		// Verificar se sessao está ativa
-		if(sessao.getStatus().equals(SessaoStatusEnum.A))
+		if(!validarEncerramento(sessao.getDataEncerramento().getTime()))
 			return new ResponseEntity<>("Sessão em andamento", HttpStatus.FORBIDDEN);
+		
 		// Contabilizar resultados da votacao
 		Long totalDeVotos = Long.valueOf(sessao.getVotacao().size());
 		Long votosSim = sessao.getVotacao().parallelStream().filter(v -> v.getVoto().toUpperCase().equalsIgnoreCase("SIM")).count();
